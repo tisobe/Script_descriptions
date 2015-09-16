@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="https://cxc.cfa.harvard.edu/mta_days/mta_script_list/house_keeping/style_sheet.css" />
+<style>
+    th{padding:5px;text-align:left}
+</style>
+
+<title>MTA Software/Script List</title>
+
+<script>
+<!-- none -->
+</script>
+
+</head>
+
+<body>
+
+<!-- ######################## -->
+<!-- begining of the document -->
+<!-- ######################## -->
+
+
+<h2>Extract data for mta comp and grad data and make fits files</h2>
+
+<b><u>Last Updated: Sep 24, 2014</u></b>
+
+
+<h3>Description</h3>
+<p>
+<!-- here you need to put what is the purpose of this script. -->
+Extracts  needed data from mp_report, and create a history files for comp and grad data 
+</p>
+
+<h3>Location of Scripts and Their Names</h3>
+
+<p>
+<!-- physical location of the files -->
+<b>Location</b>: /data/mta/Script/Trending/Trending_Script/
+</p>
+<p>
+<!-- if you uploaded to gibhub, please put the address of github  -->
+<b>GitHub Address</b>: https://github.com/tisobe/Trending_Script
+</p>
+
+
+<table border=0>
+<tr><th>Script Name</th>            <th>Last Updated</th></tr>
+<tr><td>trend_wrap_script</td>       <td>Aug 23, 2012</td></tr>
+<tr><td>trend_script</td>            <td>Aug 23, 2012</td></tr>
+<tr><td>trend_wrap_script_test</td>  <td>Feb 27, 2012</td></tr>
+<tr><td>trend_script_test</td>       <td>Jun 06, 2012</td></tr>
+<tr><td>extract_data.perl</td>       <td>Jul 31, 2014</td></tr>
+</table>
+
+<p>
+<!--  here you put a short description of scripts or README file location.-->
+</p>
+<table border = 0>
+<tr><th>Sep 22, 2014</th><td>Initially logged</td></tr>
+</table>
+
+
+
+<h3>Data Needed</h3>
+<!--- a list of input data --->
+
+<ul>
+<li>
+/data/mta/www/mp_reports/&lt;yyymmdd&gt;/&lt;msid&gt;/data/&ltmsid&gt;_summ.fits
+</li>
+</ul>
+
+<h3>Environment Setting</h3>
+<!-- describe the environment setting -->
+<ul>
+<li>
+ASCDS  (source /home/mta/.ascrc )
+</li>
+<li>
+source /home/mta/bin/reset_param
+</li>
+<li>set path = (/home/ascds/DS.release/bin/  $path)
+</li>
+<li>
+set path = (/home/ascds/DS.release/ots/bin/ $path)
+</li>
+</ul>
+
+<h3>Output Locations and File Names</h3>
+<!-- describe the output location and the file names -->
+<ul>
+<li>
+/data/mta/Script/Trending/Trend/
+    <ul>
+    <li>
+    avg_&lt;msid&gt;.fits
+    </li>
+    </ul>
+</li>
+</ul>
+
+
+<h3>How to Run the Script(s)</h3>
+<!-- describe how to run all scripts. start from environmental setting -->
+<ol> 
+<li>
+go to: cd /data/mta/Script/Trending
+</li>
+<li>
+run:   /data/mta/Script/Trending/trend_wrap_script
+</li>
+</ol>
+
+
+<h3>How to Run Test(s)</h3>
+<!-- describe how to run test. start from environmental setting -->
+<ol> 
+<li>
+go to: cd /data/mta/Script/Trending
+</li>
+<li>
+run:   /data/mta/Script/Trending/trend_wrap_script_test
+</li>
+
+</ol>
+
+<div style='padding-left:20px'>
+<h4>Expected result from the test</h4>
+<!-- describe what we should see when we run the test -->
+<p>
+The results are saved in /data/mta/Script/Trending/Test_out/. Compare the results with those in 
+/data/mta/Script/Trending/Test_comp_results/.
+</p>
+
+
+
+
+</div>
+
+<h3>Cron Job</h3>
+<table border= 0>
+<tr><th>CPU: </th><td>c3po-v</td></tr>
+<tr><th>User: </th><td>mta</td></tr>
+</table>
+<p>
+0 7  * * * cd /data/mta/Script/Trending; /data/mta/Script/Trending/trend_wrap_script >> $HOME/Logs//trending.perl.cron 2>&1
+</p>
+
+
+<h3>Web Addreess</h3>
+<p>
+no web page.
+</a>
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+<!-- describe any other concern / instructions -->
+None
+</p>
+
+<h3>Future Plan/Update Schedule</h3>
+<p>
+<!-- please describe update plan etc yere -->
+The script will be rewritten in python.
+</p>
+
+<!-- the end of the document -->
+
+<div  style='padding-top:10px'>
+</div>
+<hr />
+<div  style='padding-top:10px'>
+</div>
+
+<a href='https://cxc.cfa.harvard.edu/mta_days/mta_script_list/mta_script_list.html'>
+Back to Top Page
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

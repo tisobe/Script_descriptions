@@ -1,0 +1,114 @@
+
+MTA/USINT DS10.3 Testing Plan
+-----------------------------
+
+We concentrate our test to those that use sybase and arc4gl. Most of mta/usint scripts
+which access to sybase use explicit "/soft/SYBASE_OCS15.5". They need to be
+updated to "/soft/SYBASE15.7" before the test. However, we need to run only a half dozen
+representable scripts on owen-v to see whether other scripts work with the update. 
+
+There are four types of scripts.
+1. perl script
+2. perl cgi script
+3. python script
+4. k shell script
+
+The second and third items need special settings on owen-v when we test them.
+
+* The second ones need cgi setting on owen-v; since the scripts are also 
+  written in perl, they may face some problems on owen-v.
+
+* The third ones need to be able to see the following path from owen-v:
+
+    "/proj/sot/ska/arch/x86_64-linux_CentOS-5/lib/python2.7/".
+
+
+Test
+----
+1. Perl script with sybase access:
+
+    Run the test script described in:
+    https://cxc.cfa.harvard.edu/mta_days/mta_script_list/Takashi/ti_abs_pointing.html
+
+Test passed on c3po-v
+
+Failed on owen-v
+#####################
+mta@owen-v-120: /usr/bin/perl /data/mta/Script/ALIGNMENT/Abs_pointing/Abs_pointing_owen/abs_pointing_find_candidate.perl test
+Can't locate DBD/Sybase.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /data/mta/Script/ALIGNMENT/Abs_pointing/Abs_pointing_owen/abs_pointing_find_candidate.perl line 4.
+BEGIN failed--compilation aborted at /data/mta/Script/ALIGNMENT/Abs_pointing/Abs_pointing_owen/abs_pointing_find_candidate.perl line 4.
+#####################
+
+2. Perl script with arc4gl access:
+
+    Run the test script described in:
+    https://cxc.cfa.harvard.edu/mta_days/mta_script_list/Takashi/ti_sim_twist.html
+
+test pass on c3po-v
+
+arc4gl works on owen-v, but:
+#####################
+Can't locate DBD/Sybase.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /data/mta/Script/ALIGNMENT/Sim_twist/Alignment_sim_twist_owen/alignment_sim_twist_extract.perl line 4.
+BEGIN failed--compilation aborted at /data/mta/Script/ALIGNMENT/Sim_twist/Alignment_sim_twist_owen/alignment_sim_twist_extract.perl line 4.
+Can't locate PGPLOT.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /data/mta/Script/ALIGNMENT/Sim_twist/Alignment_sim_twist_owen/alignment_sim_twist_extract_plot_only.perl line 2.
+BEGIN failed--compilation aborted at /data/mta/Script/ALIGNMENT/Sim_twist/Alignment_sim_twist_owen/alignment_sim_twist_extract_plot_only.perl line 2.
+####################
+
+3. Perl script with dataseeker access:
+    
+    Run the test script described in:
+    https://cxc.cfa.harvard.edu/mta_days/mta_script_list/Takashi/ti_sim_plot.html
+
+test pass on c3po-v
+
+dataseeker works on owen-v.
+
+4. Perl cgi script with sybase access:
+
+    Open a test version of Ocat Data Page and test it.
+    https://cxc.cfa.harvard.edu/mta/CUS/Usint/ocatdata2html_test.cgi?16259
+
+Setting:
+/proj/cm/Integ/install.DS10.3/ots/bin/perl
+
+the script worked as expected. 
+
+
+##################
+
+5. Python script with arc4gl access. This also tests whether SOT python setting works:
+    
+    Run the test script described in:
+    https://cxc.cfa.harvard.edu/mta_days/mta_script_list/Takashi/ti_acis_cti.html
+###################
+The following problem was solved:
+
+    /proj/sot/ska/bin/python: line 5: /proj/sot/ska/arch/x86_64-linux_RHEL-6/bin/python: No such file or directory
+    /proj/sot/ska/bin/python: line 5: exec: /proj/sot/ska/arch/x86_64-linux_RHEL-6/bin/python: cannot execute: No such file or directory
+&&&&&&&&&
+
+All test run on c3po-v
+
+flt_run_pipe failed on owen-v
+flt_run_pipe -r zcomp -i /data/mta/Script/ACIS/CTI/Exc/Temp_comp_area/ -o /data/mta/Script/ACIS/CTI/Exc/Temp_comp_area/ -t mta_monitor_cti.ped -a "genrpt=yes"
+
+###################
+
+6. k shell script with sybase access:
+
+    Although it does not have a test mode, just run the script:
+    https://cxc.cfa.harvard.edu/mta_days/mta_script_list/Takashi/ti_sot_observations.html
+
+###################
+    mta@owen-v-109:  /data/mta4/obs_ss/sot_data.ksh
+    /usr/local/bin/sqsh: error while loading shared libraries: libsybblk64.so: cannot open shared object file: No such file or directory
+
+###################
+
+
+
+
+
+source ~/.ascrc -r /proj/cm/Integ/install.DS10.3
+
+/proj/cm/Integ/install.DS10.3/ots/bin/perl

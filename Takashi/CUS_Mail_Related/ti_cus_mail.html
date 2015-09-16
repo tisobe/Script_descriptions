@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="https://cxc.cfa.harvard.edu/mta_days/mta_script_list/house_keeping/style_sheet.css" />
+<style>
+    th{padding:5px;text-align:left}
+</style>
+
+<title>CUS Mail Archive</title>
+
+<script>
+<!-- none -->
+</script>
+
+</head>
+
+<body>
+
+<!-- ######################## -->
+<!-- begining of the document -->
+<!-- ######################## -->
+
+
+<h2>CUS Mail Archive</h2>
+
+<b><u>Last Updated: Jan 06, 2015</u></b>
+
+
+<h3>Description</h3>
+<p>
+<!-- here you need to put what is the purpose of this script. -->
+</p>
+
+<h3>Location of Scripts and Their Names</h3>
+
+<p>
+<!-- physical location of the files -->
+<b>Location</b>: /data/mta/Script/Cusmail/CUS_Mail/
+</p>
+<p>
+<!-- if you uploaded to gibhub, please put the address of github  -->
+<b>GitHub Address</b>: https://github.com/tisobe/CUS_Mail
+</p>
+
+
+<table border=0>
+<tr><td>update_cus_wrap_script</td>       <td>Jan 06, 2014</td></tr>
+<tr><td>update_cus_main_script</td>       <td>Jan 06, 2014</td></tr>
+<tr><td>update_cus_wrap_script_test</td>  <td>Jan 06, 2014</td></tr>
+<tr><td>update_cus_main_script_test</td>  <td>Jan 06, 2014</td></tr>
+<tr><td>update_cus_dec_wrap_script</td>   <td>Jan 06, 2014</td></tr>
+<tr><td>update_cus_dec_main_script</td>   <td>Jan 06, 2014</td></tr>
+<tr><td>extract.perl</td>                 <td>Aug 22, 2012</td></tr>
+<tr><td>prep_test.perl</td>               <td>Jan 06, 2014</td></tr>
+<tr><td>update_cus_mail.perl</td>         <td>Apr 01, 2014</td></tr>
+<tr><td>update_cus_mail_dec.perl</td>     <td>Jan 06, 2015</td></tr>
+</table>
+
+<p>
+<!--  here you put a short description of scripts or README file location.-->
+Please read README file for more details.
+/data/mta/Script/Cusmail/CUS_Mail/README
+</p>
+<table border = 0>
+<tr><th>Sep 17, 2014</th><td>Initially logged</td></tr>
+<tr><th>Jan 05, 2015</th><td>update_cus_mail_dec.perl directory bug fixed</td></tr>
+</table>
+
+
+
+<h3>Data Needed</h3>
+<!--- a list of input data --->
+
+<ul>
+<li>
+ /data/mta4/CUS/www/MAIL/ARCHIVE/index.html
+</li>
+<li>
+/data/mta4/CUS/www/MAIL/*.html
+</li>
+</ul>
+
+<h3>Environment Setting</h3>
+<!-- describe the environment setting -->
+<ul>
+<li>
+NA
+</li>
+</ul>
+
+<h3>Output Locations and File Names</h3>
+<!-- describe the output location and the file names -->
+<ul>
+<li>
+/data/mta4/CUS/www/MAIL/ARCHIVE/
+    <ul>
+    <li> index.html </li>
+    <li> &lt;year&gt;&lt;mon&gt;/*.html (e.g. 2014MAY/0133.html) </li>
+    </ul>
+</li>
+<li>
+/data/mta4/CUS/www/SECONDARY_MAIL_SAVE/
+    <ul>
+    <li> &lt;year&gt;&lt;mon&gt;/*.html </li>
+    </ul>
+</li>
+</ul>
+
+
+<h3>How to Run the Script(s)</h3>
+<!-- describe how to run all scripts. start from environmental setting -->
+<ol> 
+<li>
+go to: cd /data/mta/Script/Cusmail/Exc
+</li>
+<li>
+run:  /data/mta/Script/Cusmail/CUS_Mail/update_cus_wrap_script
+</li>
+<li>
+go to: cd /data/mta/Script/Cusmail/Exc
+</li>
+<li>
+run:  /data/mta/Script/Cusmail/CUS_Mail/update_cus_dec_wrap_script
+</li>
+
+</ol>
+
+
+<h3>How to Run Test(s)</h3>
+<!-- describe how to run test. start from environmental setting -->
+<ol> 
+<li>
+go to: cd /data/mta/Script/Cusmail/Exc
+</li>
+<li>
+run:  /data/mta/Script/Cusmail/CUS_Mail/update_cus_wrap_script_test
+</li>
+</ol>
+
+<div style='padding-left:20px'>
+<h4>Expected result from the test</h4>
+<!-- describe what we should see when we run the test -->
+<p>
+The results are saved in /data/mta/Script/Cusmail/Test_out/. Compare the results with those in 
+/data/mta/Script/Cusmail/Test_comp_results/.
+
+</p>
+
+
+
+
+</div>
+
+<h3>Cron Job</h3>
+<table border= 0>
+<tr><th>CPU: </th><td>c3po-v</td></tr>
+<tr><th>User: </th><td>cus</td></tr>
+</table>
+<p>
+0 3    1 2-12 * cd /data/mta/Script/Cusmail/Exc;/data/mta/Script/Cusmail/CUS_Mail/update_cus_wrap_script >> $HOME/Logs/cus_mail.cron 2>&1
+<br />
+45 23 31 12   * cd /data/mta/Script/Cusmail/Exc;/data/mta/Script/Cusmail/CUS_Mail/update_cus_dec_wrap_script >> $HOME/Logs/cus_mail.cron 2>&1
+
+</p>
+
+
+<h3>Web Addreess</h3>
+<p>
+NA
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+<!-- describe any other concern / instructions -->
+None
+</p>
+
+<h3>Future Plan/Update Schedule</h3>
+<p>
+<!-- please describe update plan etc yere -->
+The scripts will be rewritten in python.
+</p>
+
+<!-- the end of the document -->
+
+<div  style='padding-top:10px'>
+</div>
+<hr />
+<div  style='padding-top:10px'>
+</div>
+
+<a href='https://cxc.cfa.harvard.edu/mta_days/mta_script_list/mta_script_list.html'>
+Back to Top Page
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

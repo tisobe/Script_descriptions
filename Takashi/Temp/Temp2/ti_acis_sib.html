@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="https://cxc.cfa.harvard.edu/mta_days/mta_script_list/house_keeping/style_sheet.css" />
+<style>
+    th{padding:5px;text-align:left}
+</style>
+
+<title>MTA Software/Script List</title>
+
+<script>
+<!-- none -->
+</script>
+
+</head>
+
+<body>
+
+<!-- ######################## -->
+<!-- begining of the document -->
+<!-- ######################## -->
+
+
+<h2>ACIS SIB</h2>
+
+<b><u>Last Updated: Sep 16, 2014</u></b>
+
+
+<h3>Description</h3>
+<p>
+<!-- here you need to put what is the purpose of this script. -->
+This set of scripts extracts ACIS SIB data and plots their trends.
+</p>
+
+<h3>Location of Scripts and Their Names</h3>
+
+<p>
+<!-- physical location of the files -->
+<b>Location</b>:
+</p>
+<ul>
+<li>/data/mta/Script/ACIS/SIB/Correct_excess/Scripts</li>
+<li>/data/mta/Script/ACIS/SIB/Correct_excess/Sib_corr</li>
+</ul>
+<p>
+<!-- if you uploaded to gibhub, please put the address of github  -->
+<b>GitHub Address</b>: https://github.com/tisobe/Sib_corr
+</p>
+
+
+<table border=0>
+<tr><th>Script Name</th>            <th>Last Updated</th></tr>
+<tr><td colspan=2><u><em>First location</em></u></td></tr>
+<tr><td>ccd_comb_plot.py</td>       <td>Apr 02, 2014</td></tr>
+<tr><td>update_html.py</td>         <td>Feb 05, 2014</td></tr>
+<tr><td colspan=2><u><em>Second location</em></u></td></tr>
+<tr><td>wrap_script</td>            <td>Feb 24, 2010</td></tr>
+<tr><td>main_script</td>            <td>Feb 24, 2010</td></tr>
+<tr><td>process_evt1.perl</td>      <td>Apr 22, 2013</td></tr>
+<tr><td>process_evt2.perl</td>      <td>Apr 23, 2013</td></tr>
+<tr><td>exclude_srouces.perl</td>   <td>Jun 03, 2013</td></tr>
+<tr><td>sib_corr_comp_sib.perl</td> <td>Apr 22, 2013</td></tr>
+<tr><td>correct_factor.perl</td>    <td>Feb 12, 2010</td></tr>
+<tr><td>find_excess_file.perl</td>  <td>Feb 11, 2010</td></tr>
+<tr><td>move_exess_list.perl</td>   <td>May 02, 2014</td></tr>
+<tr><td>sib_corr_comb.perl</td>     <td>Apr 22, 2013</td></tr>
+</table>
+
+<p>
+<!--  here you put a short description of scripts or README file location.-->
+Please read README file for more details.
+/data/mta/Script/ACIS/SIB/Correct_excess/Sib_corr/README_NEW
+</p>
+<table border = 0>
+<tr><th>Sep 16, 2014</th><td>Initially logged</td></tr>
+</table>
+
+
+
+<h3>Data Needed</h3>
+<!--- a list of input data --->
+
+<ul>
+<li>
+acis evt1 and evt2 fits files extracted by arc4gl from archive.
+</li>
+</ul>
+
+<h3>Environment Setting</h3>
+<!-- describe the environment setting -->
+<ul>
+<li> ASCDS  (source /home/mta/.ascrc) </li>
+<li> source /home/mta/bin/reset_param </li>
+<li> unsetenv PERLLIB; unsetenv PERL5LIB </li>
+<li> set path = (/home/ascds/DS.release/bin/  $path) </li>
+<li> set path = (/home/ascds/DS.release/ots/bin/ $path) </li>
+<li> setenv MTA_REPORT_DIR  /data/mta/Script/ACIS/SIB/Correct_excess/Lev1/Reportdir/ </li>
+<li> setenv PYTHONPATH "/proj/sot/ska/arch/x86_64-linux_CentOS-5/lib/python2.7/site-packages"</li>
+</ul>
+
+<h3>Output Locations and File Names</h3>
+<!-- describe the output location and the file names -->
+<ul>
+<li>
+/data/mta/Script/ACIS/SIB/Data/Data_&lt;year&gt;_&lt;month&gt;/
+    <ul>
+    <li> lres_ccd&lt;ccd#&gt;_merged.fits.gz </li>
+    </ul>
+</li>
+<li>
+/data/mta/Script/ACIS/SIB/Lev2/Data/Data_&lt;year&gt;_&lt;month&gt;/
+    <ul>
+    <li> lres_ccd&lt;ccd#&gt;_merged.fits.gz </li>
+    </ul>
+</li>
+<li>
+/data/mta_www/mta_sib/Plots/Plot_&lt;year&gt;_&lt;month&gt;/
+    <ul>
+    <li> combined_month_plot_ccd&lt;ccd#&gt;.png </li>
+    <li> month_ccd&lt;ccd#&gt;.png </li>
+    </ul>
+</li>
+<li>
+/data/mta_www/mta_sib/Lev2/Plots/Plot_&lt;year&gt;_&lt;month&gt;/
+    <ul>
+    <li> combined_month_plot_ccd&lt;ccd#&gt;.png </li>
+    <li> month_ccd&lt;ccd#&gt;.png </li>
+    </ul>
+</li>
+</ul>
+
+
+<h3>How to Run the Script(s)</h3>
+<!-- describe how to run all scripts. start from environmental setting -->
+<ol> 
+<li>
+go to:  cd /data/mta/Script/Sib/Correct_excess/
+</li>
+<li>
+set: setascds
+</li>
+<li>
+run:  /usr/local/bin/perl Sib_corr/sib_corr_find_observation.perl &lt;start&gt; &ltstop&gt;
+<br /> where start and stop are the time of the interval start and stop time in the format of 
+mm/dd/yy,hh:mm:ss, e.g. 01/01/14;00:00:00
+<br />
+this will create a file acis_obs
+</li>
+<li>
+go to :cd /data/mta/Script/Sib/Correct_excess/Lev2
+</li>
+<li>
+copy: cp ../acis_obs .
+</li>
+<li>
+run:    wap_script
+</li>
+<li>
+reset env:  rm -rf param; mkdir param;source /home/mta/bin/reset_param
+</li>
+<li>
+run:     /usr/local/bin/perl ./correct_factor.perl
+</li>
+<li>
+run:    /usr/local/bin/perl ./find_excess_file.perl 
+</li>
+<li>
+run:    /usr/local/bin/perl /data/mta/Script/ACIS/SIB/Correct_excess/Sib_corr/sib_corr_comb.perl &lt;start&gt; &lt;end&gt; 
+<br />
+where &lt;start&gt; &lt;end&gt; is start and stop time in the format of &lt;yyyy&gt;:&lt;ydate&gt;&lt;hh&gt;:&lt;mm&gt;:&lt;ss&gt;, e.g., 2014:213:00:00:00
+</li>
+<li>
+move: mv /data/mta/Script/ACIS/SIB/Correct_excess/Lev2/Data/* /data/mta/Script/ACIS/SIB/Lev2/Data/Data_&lt;year&gt;_&lt;month&gt;/.
+</li>
+<li>
+go to :cd /data/mta/Script/Sib/Correct_excess/Lev1
+</li>
+<li>
+copy: cp ../acis_obs .
+</li>
+<li>
+run:    wap_script
+</li>
+<li>
+reset env:  rm -rf param; mkdir param;source /home/mta/bin/reset_param
+</li>
+<li>
+run:     /usr/local/bin/perl ./correct_factor.perl
+</li>
+<li>
+run:    /usr/local/bin/perl ./move_exess_list.perl
+</li>
+<li>
+run:    /usr/local/bin/perl /data/mta/Script/ACIS/SIB/Correct_excess/Sib_corr/sib_corr_comb.perl &lt;start&gt; &lt;end&gt; 
+<br />
+where &lt;start&gt; &lt;end&gt; is start and stop time in the format of &lt;yyyy&gt;:&lt;ydate&gt;&lt;hh&gt;:&lt;mm&gt;:&lt;ss&gt;, e.g., 2014:213:00:00:00
+</li>
+<li>
+move: mv /data/mta/Script/ACIS/SIB/Correct_excess/Lev1/Data/* /data/mta/Script/ACIS/SIB/Data/Data_&lt;year&gt;_&lt;month&gt;/.
+</li>
+<li>
+go to : cd  /data/mta/Script/Sib/Correct_excess/
+</li>
+<li>
+set: setenv PYTHONPATH "/proj/sot/ska/arch/x86_64-linux_CentOS-5/lib/python2.7/site-packages"
+</li>
+<li>
+run: /data/mta/Script/ACIS/SIB/Correct_excess/Scripts/ccd_comb_plot.py
+</li>
+<li>
+run: /data/mta/Script/ACIS/SIB/Correct_excess/Scripts/update_html.py
+</li>
+<li>
+run: /data/mta/Script/ACIS/SIB/Correct_excess/Scripts/ccd_comb_plot.py  lev2
+</li>
+<li>
+run: /data/mta/Script/ACIS/SIB/Correct_excess/Scripts/update_html.py    lev2
+</li>
+
+
+</ol>
+
+
+<h3>How to Run Test(s)</h3>
+<!-- describe how to run test. start from environmental setting -->
+<ol> 
+<li>
+Test is not available for this set of scripts.
+</li>
+</ol>
+
+<div style='padding-left:20px'>
+<h4>Expected result from the test</h4>
+<!-- describe what we should see when we run the test -->
+<p>
+test results -- test results -- test results
+
+</p>
+
+
+
+
+</div>
+
+<h3>Cron Job</h3>
+<p>
+There is no cron job for this task.
+</p>
+
+
+<h3>Web Addreess</h3>
+<p>
+<a href='https://cxc.cfa.harvard.edu/mta_days/mta_sib/sib_main.html'>
+https://cxc.cfa.harvard.edu/mta_days/mta_sib/sib_main.html
+</a>
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+<!-- describe any other concern / instructions -->
+None
+</p>
+
+<h3>Future Plan/Update Schedule</h3>
+<p>
+<!-- please describe update plan etc yere -->
+Rewrite all perl scripts by python scripts
+</p>
+
+<!-- the end of the document -->
+
+<div  style='padding-top:10px'>
+</div>
+<hr />
+<div  style='padding-top:10px'>
+</div>
+
+<a href='https://cxc.cfa.harvard.edu/mta_days/mta_script_list/mta_script_list.html'>
+Back to Top Page
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

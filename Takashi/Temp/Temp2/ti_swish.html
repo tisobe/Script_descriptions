@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="https://cxc.cfa.harvard.edu/mta_days/mta_script_list/house_keeping/style_sheet.css" />
+<style>
+    th{padding:5px;text-align:left}
+</style>
+
+<title>MTA Software/Script List</title>
+
+<script>
+<!-- none -->
+</script>
+
+</head>
+
+<body>
+
+<!-- ######################## -->
+<!-- begining of the document -->
+<!-- ######################## -->
+
+
+<h2>Swish</h2>
+
+<b><u>Last Updated: Sep 24, 2014</u></b>
+
+
+<h3>Description</h3>
+<p>
+<!-- here you need to put what is the purpose of this script. -->
+This script creates searchable index of mail archives.
+</p>
+
+<h3>Location of Scripts and Their Names</h3>
+
+<p>
+<!-- physical location of the files -->
+<b>Location</b>: <br />
+/data/mta4/CUS/www/MAIL/SWISH_E/SWISH_Script/
+<br />
+/data/mta4/CUS/www/MAIL/SWISH_E/local/bin/
+</p>
+<p>
+<!-- if you uploaded to gibhub, please put the address of github  -->
+<b>GitHub Address</b>: https://github.com/tisobe/Wish-e
+</p>
+
+
+<table border=0>
+<tr><th>Script Name</th>              <th>Last Updated</th></tr>
+<tr><td colspan=2><u><em>First Directory</em></u></td></tr>
+<tr><td>swish_wrap_script2</td>       <td>Mar 27, 2013</td></tr>
+<tr><td>swish_main_script2</td>       <td>Mar 27, 2013</td></tr>
+<tr><td>swish_run2.perl</td>          <td>Mar 27, 2013</td></tr>
+<tr><td colspan=2><u><em>Second Directory</em></u></td></tr>
+<tr><td>swish-e</td>                  <td>Mar 27, 2013</td></tr>
+</table>
+
+<p>
+<!--  here you put a short description of scripts or README file location.-->
+Please read README file for more details.
+/data/mta4/CUS/www/MAIL/SWISH_E/SWISH_Script/README
+</p>
+<table border = 0>
+<tr><th>Sep 18, 2014</th><td>Initially logged</td></tr>
+</table>
+
+
+
+<h3>Data Needed</h3>
+<!--- a list of input data --->
+
+<ul>
+<li>
+/data/mta4/CUS/www/MAIL/*.html
+</li>
+<li>
+/data/mta4/CUS/www/MAIL/ARCHIVE/*/*.html
+</li>
+</ul>
+
+<h3>Environment Setting</h3>
+<!-- describe the environment setting -->
+<ul>
+<li>
+NA
+</li>
+</ul>
+
+<h3>Output Locations and File Names</h3>
+<!-- describe the output location and the file names -->
+<ul>
+<li>
+/data/mta4/CUS/www/MAIL/SWISH_E/
+    <ul>
+    <li>
+    index.swish-e
+    </li>
+    </ul>
+</li>
+</ul>
+
+
+<h3>How to Run the Script(s)</h3>
+<!-- describe how to run all scripts. start from environmental setting -->
+<ol> 
+<li>
+go to: cd /data/mta4/CUS/www/MAIL
+</li>
+<li>
+run:   /data/mta4/CUS/www/MAIL/SWISH_E/SWISH_Script/swish_wrap_script2
+</li>
+</ol>
+
+
+<h3>How to Run Test(s)</h3>
+<!-- describe how to run test. start from environmental setting -->
+<ol> 
+<li>
+go to: cd /data/mta4/CUS/www/MAIL_ds10/
+</li>
+<li>
+run:   /data/mta4/CUS/www/MAIL_ds10/SWISH_E/SWISH_Script/swish_wrap_script2
+</li>
+
+</ol>
+
+<div style='padding-left:20px'>
+<h4>Expected result from the test</h4>
+<!-- describe what we should see when we run the test -->
+<p>
+While testing, you will see "I/O error " and "encoding error", but these are the data problems 
+not the script problems. swish can't handle none standard input. 
+It creates: index.swish-e and index.swish-e.prop (see: /data/mta4/CUS/www/MAIL_ds10/Temp). 
+</p>
+
+
+
+
+</div>
+
+<h3>Cron Job</h3>
+<table border= 0>
+<tr><th>CPU: </th><td>c3po-v</td></tr>
+<tr><th>User: </th><td>cus</td></tr>
+</table>
+<p>
+0 1  * * * cd /data/mta4/CUS/www/MAIL; /data/mta4/CUS/www/MAIL/SWISH_E/SWISH_Script/swish_wrap_script2 >> $HOME/Logs/swish_run_linux 2>&1
+</p>
+
+
+<h3>Web Addreess</h3>
+<p>
+<a href='https://icxc.harvard.edu/cus/MAIL/swish.cgi'>
+https://icxc.harvard.edu/cus/MAIL/swish.cgi
+</a>
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+<!-- describe any other concern / instructions -->
+None
+</p>
+
+<h3>Future Plan/Update Schedule</h3>
+<p>
+<!-- please describe update plan etc yere -->
+None
+</p>
+
+<!-- the end of the document -->
+
+<div  style='padding-top:10px'>
+</div>
+<hr />
+<div  style='padding-top:10px'>
+</div>
+
+<a href='https://cxc.cfa.harvard.edu/mta_days/mta_script_list/mta_script_list.html'>
+Back to Top Page
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
