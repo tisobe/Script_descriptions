@@ -6,7 +6,7 @@
 #                                                                                                       #
 #           author: t. isobe (tisobecfa.harvard.edu)                                                    #
 #                                                                                                       #
-#           last updated:   Jul 22, 2015                                                                #
+#           last updated:   Jun 02, 2017                                                                #
 #                                                                                                       #
 #########################################################################################################
 
@@ -47,14 +47,20 @@ def print_main_page():
     print mta group managed software/script page
 
     """
-    data = find_entries('Swolk')
-    [sw_text_line, sw_hname, sw_note_save] = print_link('Scott',   data)
+    data = find_entries('Realtime')
+    [rt_text_line, rt_hname, rt_note_save]          = print_link('Realtime',  data)
 
-    data = find_entries('Brad')
-    [bs_text_line, bs_hname, bs_note_save] = print_link('Brad',    data)
+    data = find_entries('Spacecraft')
+    [sc_text_line, sc_hname, sc_note_save]          = print_link('Spacecraft', data)
 
-    data = find_entries('Takashi')
-    [ti_text_line, ti_hname, ti_note_save] = print_link('Takashi', data)
+    data = find_entries('MTA')
+    [mta_text_line, mta_hname, mta_note_save]       = print_link('MTA',   data)
+
+    data = find_entries('USINT')
+    [usint_text_line, usint_hname, usint_note_save] = print_link('USINT', data)
+
+    data = find_entries('HRC')
+    [hrc_text_line, hrct_hname, hrc_note_save] = print_link('HRC', data)
 #
 #-- print header part of the page 
 #
@@ -86,21 +92,28 @@ def print_main_page():
     print "<h2 style='background-color:bluecolor:#FAEBD7margin-right:40px'> "
     print "<u>MTA Group Managed  Sofware/Script List</u> "
     print "</h2> "
-    print "<div style='padding-bottom:20px'> "
+    print "<div style='padding-bottom:10px'> "
     print "</div> "
+#
+#--- link to sot job list
+#
+    print "<p style='padding-bottom:10px'><b>If you like to see a quick reference of SOT jobs, please go to: "
+    print "<a href='https://cxc.cfa.harvard.edu/mta/REPORTS/sot_jobs.html' target='blank'>Chandra SOT Job  Page</a>."
+    print "</b></p>"
 
 #
 #-- print out "Note" if there are some notes
 #
     print "<h3><u>Current Concerns</u></h3>"
-    if len(sw_hname) == 0 and  len(bs_hname) == 0 and len(ti_hname) == 0:
+    if len(rt_hname) == 0 and  len(sc_hname) == 0 and len(mta_hname) == 0 and len(usint_hname) == 0:
         print "<p>None<p>"
     else:
         print "<table border = 1 cell-padding=2>"
 
-        print_note(sw_hname, sw_note_save,'sw') 
-        print_note(bs_hname, bs_note_save,'bs') 
-        print_note(ti_hname, ti_note_save,'ti') 
+        print_note(rt_hname,    rt_note_save,   'rt') 
+        print_note(sc_hname,    sc_note_save,   'sc') 
+        print_note(mta_hname,   mta_note_save,  'mta') 
+        print_note(usint_hname, usint_note_save,'usint') 
 
         print "</table>";
 
@@ -108,15 +121,57 @@ def print_main_page():
     print "<div style='padding-bottom:20px'> "
     print "</div> "
     print "<hr /> "
+    print "<div style='padding-top:10px'> "
+    print "</div> "
+
+#-------------------------------------------------------------------------------------------------------#
+#--                            Special Notes                                                          --#
+#-------------------------------------------------------------------------------------------------------#
+
+    print "<h3>Notes</h3>"
+    print "<ul>"
+    print "<li>"
+    print "If a title in the following seciton is hilighted by <span style='color:red'>RED</span>,"
+    print "this task must be updated by following the steps described in: "
+    print "<a href='https://github.com/taldcroft/workflow/blob/master/README.md'>Git/github workflow</a>."
+    print "Example steps are shown in: <span style='color:green'>TBA-will be written by BS </span>."
+    print "</li>"
+    print "</ul><ul>"
+    print "<li>"
+    print "All CUS Mail related functions were terminated their operation in Spring of 2015."
+    print "</li>"
+    print "</ul>"
+
+    print "<div style='padding-bottom:20px'> "
+    print "</div> "
+    print "<hr /> "
     print "<div style='padding-top:20px'> "
     print "</div> "
+
+
 #-------------------------------------------------------------------------------------------------------#
-#--                            Scott Section Starts                                                   --#
+#--                       Chandra Real Time Related Scripts                                           --#
 #-------------------------------------------------------------------------------------------------------#
 
-    print "<h3>Software/Scripts Managed by <a href='mailto:swolk@cfa.harvard.edu'>Scott Wolk</a></h3> "
+    print "<h3>Chandra Real Time Related Scripts</h3> "
 
-    print sw_text_line
+    print rt_text_line
+
+    print "<div style='padding-top:20px'> "
+    print "</div> "
+    print "<hr /> "
+    print "<div style='padding-top:20px'> "
+    print "</div> "
+
+
+
+#-------------------------------------------------------------------------------------------------------#
+#--                        Other  Spacecraft related scripts                                          --#
+#-------------------------------------------------------------------------------------------------------#
+
+    print "<h3>Other Spacecraft Related Scripts</h3> "
+
+    print sc_text_line
 
     print "<div style='padding-top:20px'> "
     print "</div> "
@@ -126,28 +181,41 @@ def print_main_page():
 
 
 #-------------------------------------------------------------------------------------------------------#
-#--                             Brad Section Starts                                                   --#
+#--                                MTA related scripts                                                --#
 #-------------------------------------------------------------------------------------------------------#
 
-    print "<h3>Software/Scripts Managed by <a href='mailto:brad@cfa.harvard.edu'>Brad Spitzbart</a></h3> "
 
-    print bs_text_line
+    print "<h3>MTA Related Scripts</h3> "
+
+    print mta_text_line
 
     print "<div style='padding-top:20px'> "
     print "</div> "
     print "<hr /> "
+
+#-------------------------------------------------------------------------------------------------------#
+#--                               USINT related scripts                                               --#
+#-------------------------------------------------------------------------------------------------------#
+
+
+    print "<h3>USINT Related Scripts</h3> "
+
+    print usint_text_line
+
     print "<div style='padding-top:20px'> "
     print "</div> "
+    print "<hr /> "
+
 
 
 #-------------------------------------------------------------------------------------------------------#
-#--                            Takashi Section Starts                                                 --#
+#--                               HRC related scripts                                                 --#
 #-------------------------------------------------------------------------------------------------------#
 
 
-    print "<h3>Software/Scripts Managed by <a href='mailto:isobe@cfa.harvard.edu'>Takashi Isobe</a></h3> "
+    print "<h3>HRC Related Scripts</h3> "
 
-    print ti_text_line
+    print hrc_text_line
 
     print "<div style='padding-top:20px'> "
     print "</div> "
@@ -177,12 +245,25 @@ def find_entries(dir):
     output: data    --- a list of files and directories
     """
 
-    cmd  = 'ls -d /data/mta/www/mta_script_list/' + dir + '/* >' + zspace
-    os.system(cmd)
-    f    = open(zspace, 'r')
-    data = [line.strip() for line in f.readlines()]
-    f.close()
-    mcf.rm_file(zspace)
+    try:
+        cmd  = 'ls -d /data/mta/www/mta_script_list/' + dir + '/* >' + zspace
+        os.system(cmd)
+        f    = open(zspace, 'r')
+        data = [line.strip() for line in f.readlines()]
+        f.close()
+        mcf.rm_file(zspace)
+    except:
+        data = []
+
+    if len(data) > 0:
+        cleaned = []
+        for ent in data:
+            mc = re.search('\~', ent)
+            if mc is not None:
+                continue
+            else:
+                cleaned.append(ent)
+        data = cleaned
 
     return data
 
@@ -198,7 +279,7 @@ def print_link(uname, indata):
     note_save = []                    #--- save note cotents
     save_line = ''
 
-    for  ent in indata:
+    for ent in indata:
 #
 #--- top level html pages
 #
@@ -217,7 +298,7 @@ def print_link(uname, indata):
                 if mc is None:
                     dir = dir.replace('\/', '')
                     dir_name.append(dir)
-#
+
 #--- printing top level html page links
 #
     if len(html_list) > 0:
@@ -261,7 +342,11 @@ def print_link(uname, indata):
 
         div = dir + '/'
         for line in data:
-            mc   = re.search('.html', line)
+            mc   = re.search('\~$', line)
+            if mc is not None:
+                continue
+
+            mc   = re.search('.html$', line)
             if mc is not None:
                 btemp = re.split(div, line)
                 dh_list.append(btemp[1])
@@ -387,10 +472,13 @@ def print_link_sub(shtml, efile):
 def print_note(hname, note, user):
 
     for i in range(0, len(hname)):
-        div = user + '_'
-        atemp = re.split(div, hname[i])
-        out = atemp[1]
-        out = out.replace('.html', '')
+        atemp = re.split('\/', hname[i])
+        btemp = re.split('_', atemp[-1])
+        out   = btemp[1]
+        for k in range(2, len(btemp)):
+            out =  out +'_' + btemp[k]
+
+        out   = out.replace('.html', '')
         print "<tr><th>" + user.upper() + "</th><th><a href='" + hname[i] +"'>" + out + "</a></th><td>" + note[i] + "</td></tr>"
 
 
